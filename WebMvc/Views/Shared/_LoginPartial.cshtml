@@ -1,0 +1,19 @@
+﻿
+
+@if (Session["UserID"] != null)
+{
+    <li>
+        @Html.ActionLink("Hello " + Session["UserName"] + "!", "Edit", "AddCustomers")
+    </li>
+    <li>
+          @Html.ActionLink("LogOut " + Session["UserName"], "LogOut", "AddCustomers")
+    </li>
+}
+
+else if (Session["UserID"] == null)
+{
+
+    <li> @Html.ActionLink("Register", "Create", "AddCustomers", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li> @Html.ActionLink("Log in", "LogIn", "AddCustomers", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+}
