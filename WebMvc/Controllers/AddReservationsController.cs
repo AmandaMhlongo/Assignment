@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebMvc.Models;
+using WebMvc.ViewModels;
 
 namespace WebMvc.Controllers
 {
@@ -24,6 +25,27 @@ namespace WebMvc.Controllers
         public ActionResult reservation()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult reservation([Bind(Include = "NumOfNights,NumOfGuests,RoomType,CheckIn,CheckOut")]ReservationViewModel reservationViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                // do stuff here like validation and mapping so fort.
+                var reservation = new Reservation
+                {
+                    BookingDate = DateTime.Now,
+                checkInDate = DateTime.Parse( reservationViewModel.CheckIn),//,"",System.Globalization.DateTimeStyles.None),
+                checkOutDate = DateTime.Parse(reservationViewModel.CheckOut),
+                numberOFGuests = reservationViewModel.NumOfGuests,
+                //Price = Double.Parse( reservationViewModel.Price)
+                };
+                db.Reservation.Add(reservation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(reservationViewModel);
         }
 
         // GET: AddReservations/Details/5
