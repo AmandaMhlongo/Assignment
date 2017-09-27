@@ -4,66 +4,130 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="main_bg">
+    <div class="wrap">
+        <div class="main">
+            <div class="res_online">
+                <h4>basic information</h4>
+                <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer.Fname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Room.RoomName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookingDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.checkInDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.checkOutDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.numberOFGuests)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th></th>
+                </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.Fname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Room.RoomName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BookingDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.checkInDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.checkOutDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numberOFGuests)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Customer.Fname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Room.RoomName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.checkInDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.checkOutDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.numberOFGuests)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.BookingID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.BookingID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.BookingID })
+                        </td>
+                    </tr>
+                }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Fname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Room.RoomName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookingDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.checkInDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.checkOutDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numberOFGuests)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookingID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookingID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookingID })
-        </td>
-    </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--start main -->
+
+@section Rsv {
+
+    <title>Flicks Hotel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="~/Dumi/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Dumi/js/jquery.min.js"></script>
+    <!---strat-date-piker---->
+    <link rel="stylesheet" href="~/Dumi/css/jquery-ui.css" />
+    <script src="~/Dumi/js/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker,#datepicker1").datepicker();
+            $("#datepicker,#datepicker2").datepicker();
+        });
+    </script>
+    <!---/End-date-piker---->
+    <link type="text/css" rel="stylesheet" href="~/Dumi/css/JFGrid.css" />
+    <link type="text/css" rel="stylesheet" href="~/Dumi/css/JFFormStyle-1.css" />
+    <script type="text/javascript" src="~/Dumi/js/JFCore.js"></script>
+    <script type="text/javascript" src="~/Dumi/js/JFForms.js"></script>
+    <!-- Set here the key for your domain in order to hide the watermark on the web server -->
+    <script type="text/javascript">
+        (function () {
+            JC.init({
+                domainKey: ''
+            });
+        })();
+    </script>
+    <!--nav-->
+    <script>
+        $(function () {
+            var pull = $('#pull');
+            menu = $('nav ul');
+            menuHeight = menu.height();
+
+            $(pull).on('click', function (e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+
+            $(window).resize(function () {
+                var w = $(window).width();
+                if (w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+
+
 }
-
-</table>
