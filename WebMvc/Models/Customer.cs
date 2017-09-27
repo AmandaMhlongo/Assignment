@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel;
-
 
 namespace WebMvc.Models
 {
     public class Customer
     {
         [Key]
-
         public int CustomerID { get; set; }
 
         [DisplayName("First Name")]
@@ -27,7 +20,6 @@ namespace WebMvc.Models
         [Required(ErrorMessage = "Password is Required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
 
         [Required(ErrorMessage = "confirmPassword is Required")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
