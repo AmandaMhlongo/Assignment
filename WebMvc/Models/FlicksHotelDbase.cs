@@ -4,7 +4,7 @@ namespace WebMvc.Models
 {
     public class FlicksHotelDbase : DbContext
     {
-        public FlicksHotelDbase() : base("FlicksHotelDbase")
+        public FlicksHotelDbase() : base("FlicksHotelDatabase")
         {
         }
 
